@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.attendancemanager.controller.DashboardController"
+            stylesheets="@../css/styles.css">
+    
+    <!-- Top Bar -->
+    <top>
+        <VBox styleClass="top-bar">
+            <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                <Text text="Punch IT" styleClass="app-title"/>
+                <VBox alignment="CENTER_LEFT" spacing="2" style="-fx-padding: 0 0 0 15;">
+                    <Text fx:id="profileNameText" text="Profile Name" style="-fx-font-size: 14px; -fx-fill: #64748b; -fx-font-weight: 600;"/>
+                    <Text text="👤 Current Profile" style="-fx-font-size: 11px; -fx-fill: #94a3b8;"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="👤 Switch Profile" onAction="#handleSwitchProfile" styleClass="secondary-button"/>
+                <Button text="+ Add Subject" onAction="#handleAddSubject" styleClass="primary-button"/>
+                <Button text="Mark Attendance" onAction="#handleMarkAttendance" styleClass="primary-button"/>
+                <Button text="📊 Analytics" onAction="#handleAnalytics" styleClass="primary-button"/>
+                <Button fx:id="themeToggle" text="🌙" onAction="#handleToggleTheme" styleClass="icon-button"/>
+            </HBox>
+            
+            <!-- Overall Summary with Animated Circles -->
+            <VBox styleClass="summary-bar">
+                <HBox alignment="CENTER" spacing="25">
+                    <padding>
+                        <Insets top="25" right="20" bottom="10" left="20"/>
+                    </padding>
+                    <VBox alignment="CENTER" spacing="6">
+                        <StackPane fx:id="totalSubjectsCircle"/>
+                        <Text text="Total Subjects" styleClass="summary-label-new"/>
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="6">
+                        <StackPane fx:id="totalClassesCircle"/>
+                        <Text text="Total Classes" styleClass="summary-label-new"/>
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="6">
+                        <StackPane fx:id="attendedClassesCircle"/>
+                        <Text text="Attended" styleClass="summary-label-new"/>
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="6">
+                        <StackPane fx:id="overallAttendanceCircle"/>
+                        <Text text="Overall %" styleClass="summary-label-new"/>
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="6">
+                        <StackPane fx:id="safeSubjectsCircle"/>
+                        <Text text="Safe" styleClass="summary-label-new"/>
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="6">
+                        <StackPane fx:id="riskSubjectsCircle"/>
+                        <Text text="At Risk" styleClass="summary-label-new"/>
+                    </VBox>
+                </HBox>
+                <!-- Real-time recommendation text -->
+                <HBox alignment="CENTER">
+                    <padding>
+                        <Insets top="5" right="20" bottom="15" left="20"/>
+                    </padding>
+                    <Text fx:id="overallRecommendationText" text="" styleClass="overall-recommendation-text"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </top>
+    
+    <!-- Center - Subject Cards -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="content-area">
+            <VBox fx:id="subjectsContainer" spacing="15">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                
+                <!-- Subjects will be dynamically added here -->
+                <Label fx:id="noSubjectsLabel" text="No subjects added yet. Click 'Add Subject' to get started!" 
+                       styleClass="empty-state" visible="true" managed="true"/>
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+    <!-- Bottom Bar -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="15" styleClass="bottom-bar">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+            <Button text="Schedule" onAction="#handleSchedule" styleClass="primary-button"/>
+            <Button text="Timetable" onAction="#handleTimetable" styleClass="primary-button"/>
+        </HBox>
+    </bottom>
+</BorderPane>

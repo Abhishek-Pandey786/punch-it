@@ -1,0 +1,228 @@
+/* Dark Theme Overrides */
+
+.root {
+    -fx-background-color: #1e1e1e !important;
+}
+
+/* Top Bar */
+.top-bar {
+    -fx-background-color: #2d2d30 !important;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 12, 0, 0, 3) !important;
+}
+
+.header {
+    -fx-background-color: #2d2d30 !important;
+}
+
+.app-title {
+    -fx-fill: #e0e0e0 !important;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 8, 0, 0, 3) !important;
+}
+
+.summary-bar {
+    -fx-background-color: linear-gradient(to bottom, #2d2d30, #252526) !important;
+    -fx-border-color: #3e3e42 !important;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 3) !important;
+}
+
+.summary-label {
+    -fx-fill: #b0b0b0 !important;
+}
+
+.summary-label-new {
+    -fx-fill: #d0d0d0 !important;
+}
+
+.summary-value {
+    -fx-fill: #e0e0e0 !important;
+}
+
+.overall-recommendation-text {
+    -fx-fill: #fbbf24 !important;
+}
+
+/* Content Area */
+.content-area {
+    -fx-background-color: #1e1e1e !important;
+}
+
+/* Subject Cards */
+.subject-card {
+    -fx-background-color: #2d2d30 !important;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0, 0, 2) !important;
+}
+
+.subject-name {
+    -fx-fill: #e0e0e0 !important;
+}
+
+.percentage-text {
+    -fx-fill: #fb923c !important;
+}
+
+.classes-text {
+    -fx-fill: #b0b0b0 !important;
+}
+
+.target-text {
+    -fx-fill: #909090 !important;
+}
+
+.recommendation-text {
+    -fx-fill: #d0d0d0 !important;
+}
+
+.prediction-text {
+    -fx-fill: #b0b0b0 !important;
+}
+
+/* Progress Bar */
+.attendance-progress > .track {
+    -fx-background-color: #3e3e42;
+}
+
+/* Empty State */
+.empty-state {
+    -fx-text-fill: #909090 !important;
+}
+
+/* Bottom Bar */
+.bottom-bar {
+    -fx-background-color: #2d2d30 !important;
+    -fx-border-color: #3e3e42 !important;
+}
+
+.status-text {
+    -fx-fill: #b0b0b0 !important;
+}
+
+/* Buttons */
+.icon-button:hover {
+    -fx-background-color: #3e3e42;
+}
+
+/* Dialog */
+.dialog-pane {
+    -fx-background-color: #2d2d30;
+}
+
+/* Text Fields */
+.text-field {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #e0e0e0;
+    -fx-border-color: #3e3e42;
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: #e0e0e0;
+}
+
+/* ScrollBar */
+.scroll-bar .thumb {
+    -fx-background-color: #3e3e42;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #4e4e52;
+}
+
+/* Analytics Dashboard Dark Theme */
+.chart-container {
+    -fx-background-color: linear-gradient(to bottom, #2d2d30, #252526) !important;
+    -fx-border-color: #3e3e42 !important;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 12, 0, 0, 4) !important;
+}
+
+.chart-title {
+    -fx-fill: #e0e0e0 !important;
+}
+
+.chart-subtitle {
+    -fx-text-fill: #b0b0b0 !important;
+}
+
+.chart {
+    -fx-background-color: transparent !important;
+}
+
+.chart-content {
+    -fx-background-color: transparent !important;
+}
+
+.chart-plot-background {
+    -fx-background-color: #1e1e1e !important;
+}
+
+.chart-vertical-grid-lines,
+.chart-horizontal-grid-lines {
+    -fx-stroke: #3e3e42 !important;
+}
+
+.chart-vertical-zero-line,
+.chart-horizontal-zero-line {
+    -fx-stroke: #4e4e52 !important;
+}
+
+.axis {
+    -fx-tick-label-fill: #b0b0b0 !important;
+}
+
+.axis-label {
+    -fx-text-fill: #d0d0d0 !important;
+}
+
+.chart-legend {
+    -fx-background-color: transparent !important;
+}
+
+.chart-legend-item {
+    -fx-text-fill: #d0d0d0 !important;
+}
+
+.chart-pie-label {
+    -fx-fill: #e0e0e0 !important;
+}
+
+.chart-pie-label-line {
+    -fx-stroke: #b0b0b0 !important;
+}
+
+/* Heatmap Dark Theme */
+.attendance-heatmap {
+    -fx-background-color: #1e1e1e !important;
+}
+
+.heatmap-cell {
+    -fx-border-color: #3e3e42 !important;
+}
+
+.heatmap-cell-none {
+    -fx-background-color: #2d2d30 !important;
+}
+
+.heatmap-day-label,
+.heatmap-month-label {
+    -fx-text-fill: #b0b0b0 !important;
+}
+
+/* Filter Components Dark Theme */
+.filter-combo {
+    -fx-background-color: #1e1e1e !important;
+    -fx-text-fill: #e0e0e0 !important;
+    -fx-border-color: #3e3e42 !important;
+}
+
+.filter-combo:focused {
+    -fx-border-color: #fb923c !important;
+}
+
+.secondary-button {
+    -fx-background-color: #3e3e42 !important;
+    -fx-text-fill: #d0d0d0 !important;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #4e4e52 !important;
+    -fx-text-fill: #e0e0e0 !important;
+}

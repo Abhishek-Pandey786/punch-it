@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.attendancemanager.controller.AnalyticsDashboardController"
+            stylesheets="@../css/styles.css">
+    
+    <!-- Top Bar with Title and Controls -->
+    <top>
+        <VBox styleClass="top-bar">
+            <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                <Text text="📊 Analytics Dashboard" styleClass="app-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                
+                <!-- Filters -->
+                <Label text="Subject:" style="-fx-font-weight: 600; -fx-font-size: 13px;"/>
+                <ComboBox fx:id="subjectFilter" promptText="All Subjects" prefWidth="180"
+                         styleClass="filter-combo"/>
+                
+                <Label text="Year:" style="-fx-font-weight: 600; -fx-font-size: 13px;"/>
+                <ComboBox fx:id="yearFilter" prefWidth="100" styleClass="filter-combo"/>
+                
+                <Button text="🔄 Refresh" onAction="#handleRefresh" styleClass="primary-button"
+                       style="-fx-padding: 8 16;"/>
+                <Button text="✕ Close" onAction="#handleClose" styleClass="secondary-button"
+                       style="-fx-padding: 8 16;"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <!-- Main Content with Charts -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+            <VBox spacing="20" styleClass="content-area">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                
+                <!-- Monthly Trends Chart -->
+                <VBox styleClass="chart-container" spacing="10">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Text text="📈 Monthly Attendance Trends" styleClass="chart-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="trendsSubtitle" text="Current Year" styleClass="chart-subtitle"/>
+                    </HBox>
+                    <LineChart fx:id="monthlyTrendsChart" legendVisible="true" 
+                              animated="true" createSymbols="true">
+                        <xAxis>
+                            <CategoryAxis label="Month" side="BOTTOM"/>
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis label="Attendance %" side="LEFT" 
+                                       lowerBound="0" upperBound="100" tickUnit="10"/>
+                        </yAxis>
+                    </LineChart>
+                </VBox>
+                
+                <!-- Subject Comparison Chart -->
+                <VBox styleClass="chart-container" spacing="10">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Text text="📊 Subject-wise Comparison" styleClass="chart-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="comparisonSubtitle" text="All Subjects" styleClass="chart-subtitle"/>
+                    </HBox>
+                    <BarChart fx:id="subjectComparisonChart" legendVisible="false" 
+                             animated="true" barGap="3" categoryGap="10">
+                        <xAxis>
+                            <CategoryAxis label="Subject" side="BOTTOM"/>
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis label="Attendance %" side="LEFT" 
+                                       lowerBound="0" upperBound="100" tickUnit="10"/>
+                        </yAxis>
+                    </BarChart>
+                </VBox>
+                
+                <!-- Attendance Heatmap -->
+                <VBox styleClass="chart-container" spacing="10">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Text text="🗓️ Attendance Calendar Heatmap" styleClass="chart-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="heatmapSubtitle" text="Year View" styleClass="chart-subtitle"/>
+                    </HBox>
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <Label text="Legend:" style="-fx-font-size: 12px; -fx-font-weight: 600; -fx-text-fill: #64748b;"/>
+                        <HBox spacing="5" alignment="CENTER_LEFT">
+                            <StackPane style="-fx-background-color: #10B981; -fx-min-width: 15; -fx-min-height: 15; -fx-border-radius: 2; -fx-background-radius: 2;"/>
+                            <Label text="Present" style="-fx-font-size: 11px;"/>
+                        </HBox>
+                        <HBox spacing="5" alignment="CENTER_LEFT">
+                            <StackPane style="-fx-background-color: #EF4444; -fx-min-width: 15; -fx-min-height: 15; -fx-border-radius: 2; -fx-background-radius: 2;"/>
+                            <Label text="Absent" style="-fx-font-size: 11px;"/>
+                        </HBox>
+                        <HBox spacing="5" alignment="CENTER_LEFT">
+                            <StackPane style="-fx-background-color: #94a3b8; -fx-min-width: 15; -fx-min-height: 15; -fx-border-radius: 2; -fx-background-radius: 2;"/>
+                            <Label text="Cancelled" style="-fx-font-size: 11px;"/>
+                        </HBox>
+                        <HBox spacing="5" alignment="CENTER_LEFT">
+                            <StackPane style="-fx-background-color: #f1f5f9; -fx-min-width: 15; -fx-min-height: 15; -fx-border-radius: 2; -fx-background-radius: 2;"/>
+                            <Label text="No class" style="-fx-font-size: 11px;"/>
+                        </HBox>
+                    </HBox>
+                    <ScrollPane fitToWidth="true" fitToHeight="false" 
+                               style="-fx-background: transparent; -fx-background-color: transparent;"
+                               prefHeight="180">
+                        <StackPane fx:id="heatmapContainer" alignment="CENTER" 
+                                  style="-fx-background-color: white; -fx-padding: 10;"/>
+                    </ScrollPane>
+                </VBox>
+                
+                <!-- Performance Summary -->
+                <HBox spacing="20" alignment="CENTER">
+                    <!-- Best Performers -->
+                    <VBox styleClass="chart-container" spacing="10" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+                        <Text text="🏆 Top Performers" styleClass="chart-title"/>
+                        <PieChart fx:id="bestPerformersChart" legendSide="RIGHT" 
+                                 animated="true" labelsVisible="true" startAngle="90"
+                                 prefHeight="250"/>
+                    </VBox>
+                    
+                    <!-- Worst Performers -->
+                    <VBox styleClass="chart-container" spacing="10" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+                        <Text text="⚠️ Needs Attention" styleClass="chart-title"/>
+                        <PieChart fx:id="worstPerformersChart" legendSide="RIGHT" 
+                                 animated="true" labelsVisible="true" startAngle="90"
+                                 prefHeight="250"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
